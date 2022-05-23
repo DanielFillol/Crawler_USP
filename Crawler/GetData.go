@@ -4,7 +4,6 @@ import (
 	"github.com/antchfx/htmlquery"
 	"github.com/tebeka/selenium"
 	"golang.org/x/net/html"
-	"strings"
 )
 
 type DocRow struct {
@@ -37,9 +36,7 @@ func GetData(driver selenium.WebDriver, document *html.Node, pageAmount int, fol
 			if err != nil {
 				return nil, err
 			}
-			if strings.Contains(strings.ToLower(ppr.Field), "direito") {
-				docs = append(docs, ppr)
-			}
+			docs = append(docs, ppr)
 		}
 	}
 

@@ -5,6 +5,7 @@ import (
 	"github.com/Darklabel91/Crawler_USP/Crawler"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func WriteCSV(fileName string, folderName string, papers []Crawler.DocRow) error {
@@ -13,7 +14,9 @@ func WriteCSV(fileName string, folderName string, papers []Crawler.DocRow) error
 	rows = append(rows, generateHeaders())
 
 	for _, decision := range papers {
-		rows = append(rows, generateRow(decision))
+		if strings.Contains(strings.ToLower(decision.Field), "direito") {
+			rows = append(rows, generateRow(decision))
+		}
 	}
 
 	cf, err := createFile(folderName + "/" + fileName + ".csv")

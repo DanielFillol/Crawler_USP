@@ -15,17 +15,12 @@ func resultsFound(doc *html.Node, xpathResult string) (int, error) {
 	}
 
 	innerText := htmlquery.InnerText(node)
+	stringResult1 := strings.Split(innerText, "Resultado: Exibindo")
+	stringResult2 := strings.Split(stringResult1[1], " na")
+	stringResult3 := strings.Split(stringResult2[0], "de ")
+	stringResult4 := stringResult3[1]
 
-	// TODO: not the best way
-
-	replaceText1 := strings.Replace(innerText, "Resultado: Exibindo", "", -1)
-	lastChars := replaceText1[len(replaceText1)-18:]
-	mainText := strings.Replace(replaceText1, lastChars, "", -1)
-	final := strings.Replace(mainText, mainText[0:7], "", -1)
-	papersString := strings.TrimSpace(final)
-	s := strings.Split(papersString, " ")
-
-	papers, err := strconv.Atoi(s[0])
+	papers, err := strconv.Atoi(stringResult4)
 	if err != nil {
 		return 0, err
 	}
