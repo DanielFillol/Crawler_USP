@@ -8,12 +8,16 @@ import (
 )
 
 func getRow(doc *html.Node, rowNumber int) (DocRow, error) {
+	//*[@id="CorpoAcervo"]/div[4]
 	node, err := htmlquery.Query(doc, "//*[@id=\"CorpoAcervo\"]/div["+strconv.Itoa(rowNumber)+"]")
 	if err != nil {
 		return DocRow{}, err
 	}
 
 	totalDivs := htmlquery.Find(node, "div")
+
+	//*[@id="CorpoAcervo"]/div[8]
+	///div[1]/a
 
 	if len(totalDivs) > 1 {
 		name := htmlquery.InnerText(htmlquery.FindOne(node, "div[1]/a"))
