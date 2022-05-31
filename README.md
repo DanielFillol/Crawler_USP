@@ -14,3 +14,16 @@ java -jar selenium-server-standalone.jar
 go run main.go
 
 ```
+
+## Instalar - MacOS
+```
+Instalar o Google Chrome
+Instalar o JAVA
+Instalar o Brew
+
+Baixar o selenium server stand alone\
+Permitir o acesso ao arquivo (configurações de segurança)
+
+brew install chrome river
+Permitir o chromedriver no painel de segurança
+```
